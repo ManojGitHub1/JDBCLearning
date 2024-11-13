@@ -1,0 +1,97 @@
+Client
+A JDBC client is any Java application or applet that connects to a server-based 
+database using JDBC APIs.
+
+The DriverManager
+Is a service of the JDBC API that manages the drivers and establishes a connection between a 
+JDBC client and a database server.
+
+A database server 
+Is a software program that provides database management functionality within a networked computing
+environment.
+
+2. Middleware
+    (Type 1 - C language, performance issues)
+    Type 1: JDBC-ODBC Bridge driver.
+    (Type 2 - Depends on API vendor e.g:- Oracle, Sybase, Microsoft)
+    Type 2: Native API Driver.
+    (Type 3 - Requires Middleware)
+    Type 3: Network Protocol Driver.
+    (Type 4 - Connects client and database directly without Middleware)
+    Type 4: Thin Driver
+        A thin driver is a pure Java driver that translates JDBC calls into network protocol calls and 
+        communicates directly with the database server, providing the best performance and scalabilit .
+
+3. Interfaces
+    a. Driver
+    b. Driver Manager (class loads driver)
+        - The DriverManager class manages a list of database drivers.
+        - It establishes connections to the database using the appropriate
+            driver and handles the process of loading the driver class.
+        - It provides a standardized method for handling multiple database
+            connections and selecting the appropriate driver.
+    c. Connection (interface (which is part of DM class) establishes connection and includes statement)
+        1. Creation of Statements
+            The Connection interface is used to create a Statement object, which is used to execute SQL queries against the database.
+        2. Transaction Management
+            The Connection interface allows transactions to be managed with methods such as commit() and rollback().
+        3. Retrieval of Metadata
+            The Connection interface provides methods to retrieve metadata from the database, including information about the 
+            database structure and the various objects that are defined in it.
+    d. Statement (interface helps run/execute SQL queries)
+        1. Statement
+            The Statement interface is used for executing simple SQL queries without parameters.
+        2. PreparedStatement
+            PreparedStatement is used for executing precompiled SQL queries with parameters,
+            which can be more efficient and secure than Statement objects.
+        3. CallableStatement
+            CallableStatement is used for executing database stored procedures.
+            It provides a more efficient way to access them than with SQL statement.
+    e. ResultSet (interface part of Statement)
+        1. Retrieving Data
+            The ResultSet interface is used to iterate through the rows Of the result set and
+            retrieve the data from the columns.
+        2. Scrolling Through Results
+            The ResultSet can be scrolled forwards and backwards to navigate through 
+            the results of the SQL query.
+        3. Modification of Data
+            The ResultSet allows modifications to the data within the database to be made,
+            including insertion, deletion, and updates.
+    f. SQL Exception
+        SQLException is an exception class that handles errors and exceptions related to database
+        interactions. It provides information about the type of error that occurred, 
+        and allows for more accurate debugging and error resolution.
+
+3. Exception handling (IO,SQL,ClassNF(Checked), RuntimeExp(Unckecked))
+Exception Handling is a process of managing errors and exceptions that occur during the execution of a program. It involves catching exceptions, handling them, and providing appropriate responses to the errors.
+Error can't be handled.
+                Throwable
+    Exception              Error
+        IOException          StackOverflowError 
+        SQLException         VirtualMachineError
+        ClassNotFoundExp     OutOfMemoryError
+        RuntimeExp
+            ArithmeticExp
+            NullPointerExp
+            NumberFormatExp
+            IndexOutOfBoundExp
+                ArrayIOFBExp
+                StringIOFBExp
+
+Exception is class that extends Throwable class.
+IOException extends Exception, RuntimeExp extends Exception.
+ArithmeticExp extends RuntimeExp.
+ArrayIOFBExp extends IndexOutOfBoundExp
+
+1. try{}
+2. catch(){}
+3. finally(){}
+4. throw  - used to throw an exception explicitly.
+5. throws - used to declare that a method may throw an exception.
+
+e.g:-
+throw new RuntimeException("Sorry can't vote");
+void func_name() throws IOException {...}
+
+4. 
+
